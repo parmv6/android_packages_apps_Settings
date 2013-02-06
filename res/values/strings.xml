@@ -4694,4 +4694,10 @@
     <!-- Advanced, Device specific (DeviceParts) settings  -->
     <string name="advanced_settings_title">Advanced</string>
 
+    <!-- Status bar battery style -->
+    <string name="status_bar_battery_title">Battery status style</string>
+    <string name="status_bar_battery_status_icon">Icon (default)</string>
+    <string name="status_bar_battery_status_circle">Circle</string>
+    <string name="status_bar_battery_status_circle_percentage">Circle with percentage</string>
+
 </resources>

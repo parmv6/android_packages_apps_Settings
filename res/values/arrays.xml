@@ -1082,4 +1082,17 @@
         <item>2.0</item>
         <item>3.0</item>
     </string-array>
+
+    <string-array name="entries_status_bar_battery" translatable="false">
+        <item>@string/status_bar_battery_status_icon</item>
+        <item>@string/status_bar_battery_status_circle</item>
+        <item>@string/status_bar_battery_status_circle_percentage</item>
+    </string-array>
+
+    <string-array name="values_status_bar_battery" translatable="false">
+        <item>0</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
 </resources>

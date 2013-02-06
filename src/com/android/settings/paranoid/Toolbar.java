@@ -53,6 +53,7 @@ public class Toolbar extends SettingsPreferenceFragment
     private static final String PIE_GAP = "pie_gap";
     private static final String PIE_MENU = "pie_menu";
     private static final String PIE_SEARCH = "pie_search";
+    private static final String KEY_STATUS_BAR_BATTERY = "status_bar_battery";
 
     private ListPreference mAmPmStyle;
     private ListPreference mStatusBarMaxNotif;
@@ -69,6 +70,7 @@ public class Toolbar extends SettingsPreferenceFragment
     private CheckBoxPreference mPieSearch;
     private PreferenceScreen mNavigationBarControls;
     private PreferenceCategory mNavigationCategory;
+    private ListPreference mStatusBarBattery;
 
     private Context mContext;
     private int mAllowedLocations;
@@ -167,6 +169,12 @@ public class Toolbar extends SettingsPreferenceFragment
         mStatusBarDoNotDisturb.setChecked((Settings.System.getInt(getActivity().getContentResolver(),
                 Settings.System.STATUS_BAR_DONOTDISTURB, 0) == 1));
 
+        mStatusBarBattery = (ListPreference) prefSet.findPreference(KEY_STATUS_BAR_BATTERY);
+        int batteryStyle = Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.STATUS_BAR_BATTERY, 0);
+        mStatusBarBattery.setValue(String.valueOf(batteryStyle));
+        mStatusBarBattery.setOnPreferenceChangeListener(this);
+
         if (!Utils.isTablet()) {
             prefSet.removePreference(mStatusBarMaxNotif);
             prefSet.removePreference(mMenuButtonShow);
@@ -246,6 +254,11 @@ public class Toolbar extends SettingsPreferenceFragment
             float pieTrigger = Float.valueOf((String) newValue);
             Settings.System.putFloat(getActivity().getContentResolver(),
                     Settings.System.PIE_TRIGGER, pieTrigger);
+            return true;
+        } else if (preference == mStatusBarBattery) {
+            int batteryStyle = Integer.valueOf((String) newValue);
+            Settings.System.putInt(mContext.getContentResolver(),
+                    Settings.System.STATUS_BAR_BATTERY, batteryStyle);
             return true;
         }
         return false;
