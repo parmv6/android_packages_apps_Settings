@@ -180,11 +180,13 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
             scp.setFragmentIntent(this, intent);
         }
 
-        mVolumeKeyCursorControl = (ListPreference) findPreference(VOLUME_KEY_CURSOR_CONTROL);
-        mVolumeKeyCursorControl.setOnPreferenceChangeListener(this);
-        mVolumeKeyCursorControl.setValue(Integer.toString(Settings.System.getInt(getActivity()
-                .getContentResolver(), Settings.System.VOLUME_KEY_CURSOR_CONTROL, 0)));
-        mVolumeKeyCursorControl.setSummary(mVolumeKeyCursorControl.getEntry());
+        if (!mIsOnlyImeSettings) {
+            mVolumeKeyCursorControl = (ListPreference) findPreference(VOLUME_KEY_CURSOR_CONTROL);
+            mVolumeKeyCursorControl.setOnPreferenceChangeListener(this);
+            mVolumeKeyCursorControl.setValue(Integer.toString(Settings.System.getInt(getActivity()
+                    .getContentResolver(), Settings.System.VOLUME_KEY_CURSOR_CONTROL, 0)));
+            mVolumeKeyCursorControl.setSummary(mVolumeKeyCursorControl.getEntry());
+        }
 
         mHandler = new Handler();
         mSettingsObserver = new SettingsObserver(mHandler, getActivity());
@@ -385,7 +387,7 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
                 }
             }
         }
-        if (preference == mVolumeKeyCursorControl) {
+        if (!mIsOnlyImeSettings && preference == mVolumeKeyCursorControl) {
             String volumeKeyCursorControl = (String) value;
             int val = Integer.parseInt(volumeKeyCursorControl);
             Settings.System.putInt(getActivity().getContentResolver(),
