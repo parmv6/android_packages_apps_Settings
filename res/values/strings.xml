@@ -4659,6 +4659,7 @@
     <string name="pie_trigger_normal">Normal (default)</string>
     <string name="pie_trigger_big">@string/pie_gap_big</string>
     <string name="pie_trigger_huge">@string/pie_gap_huge</string>
+    <string name="pie_trigger_disable">Disable</string>
 
     <!-- Navigation Bar #CM -->
     <string name="navigation_reset_title">@string/lock_screen_shortcuts_reset</string>
