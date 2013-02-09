@@ -761,6 +761,15 @@
                 android:resource="@id/application_settings" />
         </activity>
 
+        <activity android:name="PartitionInfo"
+                android:label="@string/partition_info_title">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.VOICE_LAUNCH" />
+            </intent-filter>
+        </activity>
+
         <activity android:name="Settings$LocationSettingsActivity"
                 android:label="@string/location_settings_title"
                 android:configChanges="orientation|keyboardHidden|screenSize"
