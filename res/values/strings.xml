@@ -4730,4 +4730,12 @@
     <string name="io_sched_set_on_boot">Set on boot</string>
     <string name="io_sched_set_on_boot_summary">Restore the I/O scheduler settings on boot</string>
 
+    <!-- Power Menu Settings -->
+    <string name="power_menu_title">Power menu</string>
+    <string name="pm_screenshot_title">Screenshot</string>
+    <string name="pm_screenshot_sound_title">Screenshot sound</string>
+    <string name="pm_screenshot_sound_summary">Plays sound effect when screenshot is taken</string>
+    <string name="pm_screenshot_delay_title">Screenshot delay</string>
+    <string name="pm_screenshot_delay_summary">Delays shot by number of seconds specified</string>
+
 </resources>
