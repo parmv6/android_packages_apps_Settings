@@ -33,9 +33,11 @@ import com.android.settings.Utils;
 
 public class PowerMenu extends SettingsPreferenceFragment implements Preference.OnPreferenceChangeListener {
 
+    private static final String PREF_LOW_BATTERY_WARNING_POLICY = "pref_low_battery_warning_policy";
     private static final String PM_SCREENSHOT_SOUND = "pm_screenshot_sound";
     private static final String PM_SCREENSHOT_DELAY = "pm_screenshot_delay";
 
+    private ListPreference mLowBatteryWarning;
     private CheckBoxPreference mScreenshotSound;
     private ListPreference mScreenshotDelay;
 
@@ -46,6 +48,13 @@ public class PowerMenu extends SettingsPreferenceFragment implements Preference.
         addPreferencesFromResource(R.xml.power_menu);
 
         PreferenceScreen prefSet = getPreferenceScreen();
+
+        mLowBatteryWarning = (ListPreference) prefSet.findPreference(PREF_LOW_BATTERY_WARNING_POLICY);
+        int lowBatteryWarning = Settings.System.getInt(getActivity().getContentResolver(),
+                                    Settings.System.POWER_UI_LOW_BATTERY_WARNING_POLICY, 3);
+        mLowBatteryWarning.setValue(String.valueOf(lowBatteryWarning));
+        mLowBatteryWarning.setSummary(mLowBatteryWarning.getEntry());
+        mLowBatteryWarning.setOnPreferenceChangeListener(this);
 
         mScreenshotSound = (CheckBoxPreference) prefSet.findPreference(PM_SCREENSHOT_SOUND);
         mScreenshotDelay = (ListPreference) prefSet.findPreference(PM_SCREENSHOT_DELAY);
@@ -73,7 +82,14 @@ public class PowerMenu extends SettingsPreferenceFragment implements Preference.
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        if (preference == mScreenshotDelay) {
+        if (preference == mLowBatteryWarning) {
+            int lowBatteryWarning = Integer.valueOf((String) newValue);
+            int index = mLowBatteryWarning.findIndexOfValue((String) newValue);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.POWER_UI_LOW_BATTERY_WARNING_POLICY, lowBatteryWarning);
+            mLowBatteryWarning.setSummary(mLowBatteryWarning.getEntries()[index]);
+            return true;
+        } else if (preference == mScreenshotDelay) {
             int screenshotDelay = Integer.valueOf((String) newValue);
             Settings.System.putInt(getContentResolver(),
                     Settings.System.SCREENSHOT_DELAY, screenshotDelay);
@@ -82,6 +98,4 @@ public class PowerMenu extends SettingsPreferenceFragment implements Preference.
 
         return false;
     }
-
-
 }

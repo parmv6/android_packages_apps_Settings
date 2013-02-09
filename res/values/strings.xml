@@ -4732,6 +4732,8 @@
 
     <!-- Power Menu Settings -->
     <string name="power_menu_title">Power menu</string>
+    <string name="pm_general_title">General</string>
+    <string name="pref_low_battery_warning_policy_title">Low battery warning</string>
     <string name="pm_screenshot_title">Screenshot</string>
     <string name="pm_screenshot_sound_title">Screenshot sound</string>
     <string name="pm_screenshot_sound_summary">Plays sound effect when screenshot is taken</string>
