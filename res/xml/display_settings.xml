@@ -68,6 +68,11 @@
             android:title="@string/battery_light_title"
             android:fragment="com.android.settings.notificationlight.BatteryLightSettings" />
 
+        <CheckBoxPreference
+            android:key="button_backlight_disable"
+            android:title="@string/button_backlight_disable_title"
+            android:persistent="false" />
+
         <PreferenceScreen
             android:key="wifi_display"
             android:title="@string/wifi_display_settings_title"

@@ -68,6 +68,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_SCREEN_SAVER = "screensaver";
     private static final String KEY_WIFI_DISPLAY = "wifi_display";
     private static final String KEY_BATTERY_LIGHT = "battery_light";
+    private static final String KEY_BUTTON_BACKLIGHT_DISABLE = "button_backlight_disable";
 
     private static final int DLG_GLOBAL_CHANGE_WARNING = 1;
 
@@ -78,6 +79,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private WarnedListPreference mFontSizePref;
     private PreferenceScreen mNotificationPulse;
     private PreferenceScreen mBatteryPulse;
+    private CheckBoxPreference mButtonBacklightDisable;
 
     private final Configuration mCurConfig = new Configuration();
     
@@ -144,6 +146,10 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 com.android.internal.R.bool.config_intrusiveBatteryLed)) {
             getPreferenceScreen().removePreference(mBatteryPulse);
         }
+
+        mButtonBacklightDisable = (CheckBoxPreference) findPreference(KEY_BUTTON_BACKLIGHT_DISABLE);
+        mButtonBacklightDisable.setChecked(Settings.System.getInt(resolver,
+            Settings.System.BUTTON_BACKLIGHT_DISABLE, 0) == 1);
 
         mDisplayManager = (DisplayManager)getActivity().getSystemService(
                 Context.DISPLAY_SERVICE);
@@ -362,6 +368,11 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         if (preference == mAccelerometer) {
             RotationPolicy.setRotationLockForAccessibility(
                     getActivity(), !mAccelerometer.isChecked());
+        } else if (preference == mButtonBacklightDisable) {
+            boolean checked = mButtonBacklightDisable.isChecked();
+            Settings.System.putInt(getContentResolver(),
+                Settings.System.BUTTON_BACKLIGHT_DISABLE, checked ? 1 : 0);
+            return true;
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }

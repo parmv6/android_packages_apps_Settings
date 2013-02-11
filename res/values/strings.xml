@@ -4748,4 +4748,7 @@
     <string name="partition_info_sdcard">/sdcard (FAT)</string>
     <string name="partition_info_sdext">EXT partition</string>
 
+    <!-- Display settings: disable button backlight -->
+    <string name="button_backlight_disable_title">Disable button backlight</string>
+
 </resources>
