@@ -18,6 +18,13 @@
         android:title="@string/lock_screen_settings">
 
     <CheckBoxPreference
+        android:key="lockscreen_hw_accel"
+        android:title="@string/lockscreen_hw_accel_title"
+        android:summary="@string/lockscreen_hw_accel_summary"
+        android:persistent="false"
+        android:defaultValue="false" />
+
+    <CheckBoxPreference
         android:key="allow_rotation"
         android:title="@string/allow_rotate_title"
         android:summary="@string/allow_rotate_summary" />

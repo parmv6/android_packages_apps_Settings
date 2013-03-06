@@ -38,6 +38,7 @@ public class Lockscreen extends SettingsPreferenceFragment
     private static final String KEY_MAXIMIZE_WIDGETS = "maximize_widgets";
     private static final String KEY_VOLBTN_MUSIC_CTRL = "music_controls";
     private static final String KEY_VOLUME_WAKE = "volume_wake";
+    private static final String PREF_LOCKSCREEN_HW_ACCELERATED = "lockscreen_hw_accel";
 
     private CheckBoxPreference mAllowRotation;
     private CheckBoxPreference mSeeThrough;
@@ -45,6 +46,7 @@ public class Lockscreen extends SettingsPreferenceFragment
     private CheckBoxPreference mMaximizeWidgets;
     private CheckBoxPreference mVolBtnMusicCtrl;
     private CheckBoxPreference mVolumeWake;
+    private CheckBoxPreference mLockscreenHwAccel;
 
     private Context mContext;
 
@@ -79,7 +81,11 @@ public class Lockscreen extends SettingsPreferenceFragment
         mVolBtnMusicCtrl = (CheckBoxPreference) findPreference(KEY_VOLBTN_MUSIC_CTRL);
         mVolBtnMusicCtrl.setChecked(Settings.System.getInt(mContext.getContentResolver(),
                    Settings.System.VOLBTN_MUSIC_CONTROLS, 0) == 1);
-                   
+
+        mLockscreenHwAccel = (CheckBoxPreference) findPreference(PREF_LOCKSCREEN_HW_ACCELERATED);
+        mLockscreenHwAccel.setChecked(Settings.System.getInt(getContentResolver(),
+                Settings.System.LOCKSCREEN_HW_ACCELERATED, 0) == 1);
+
         if(Utils.getScreenType(mContext) == Utils.DEVICE_TABLET) {
             prefSet.removePreference(mAllowRotation);
         }
@@ -121,15 +127,18 @@ public class Lockscreen extends SettingsPreferenceFragment
                 Settings.System.putInt(mContext.getContentResolver(),
                         Settings.System.HOME_SCREEN_WIDGETS, 0);
             }
-         } else if (preference == mMaximizeWidgets) {
+        } else if (preference == mMaximizeWidgets) {
             Settings.System.putInt(mContext.getContentResolver(),
                     Settings.System.LOCKSCREEN_MAXIMIZE_WIDGETS, mMaximizeWidgets.isChecked() ? 1 : 0);
-         } else if (preference == mVolumeWake) {
+        } else if (preference == mVolumeWake) {
             Settings.System.putInt(mContext.getContentResolver(),
                     Settings.System.VOLUME_WAKE_SCREEN, mVolumeWake.isChecked() ? 1 : 0);
-         } else if (preference == mVolBtnMusicCtrl) {
+        } else if (preference == mVolBtnMusicCtrl) {
             Settings.System.putInt(mContext.getContentResolver(),
                     Settings.System.VOLBTN_MUSIC_CONTROLS, mVolBtnMusicCtrl.isChecked() ? 1 : 0);
+        } else if (preference == mLockscreenHwAccel) {
+            Settings.System.putInt(mContext.getContentResolver(),
+                    Settings.System.LOCKSCREEN_HW_ACCELERATED, mLockscreenHwAccel.isChecked() ? 1 : 0);
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }

@@ -4768,4 +4768,8 @@
     <string name="notification_convert_sound_to_vibration_title">Notification conversion</string>
     <string name="notification_convert_sound_to_vibration_summary">Sounds to vibrations during vibrate mode</string>
 
+    <!-- Lockscreen: Enable hardware acceleration -->
+    <string name="lockscreen_hw_accel_title">Enable hardware acceleration</string>
+    <string name="lockscreen_hw_accel_summary">Smoother lockscreen at the cost of small graphics glitch in unlock ring (requires reboot)</string>
+
 </resources>
