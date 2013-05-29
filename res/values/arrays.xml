@@ -981,6 +981,7 @@
         <item>0</item>
         <item>1</item>
         <item>2</item>
+    </string-array>
 
     <string-array name="entries_pie_angle">
         <item>@string/pie_angle_none</item>
