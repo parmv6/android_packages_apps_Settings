@@ -1021,7 +1021,6 @@
         <item>@string/pie_trigger_normal</item>
         <item>@string/pie_trigger_big</item>
         <item>@string/pie_trigger_huge</item>
-        <item>@string/pie_trigger_disable</item>
     </string-array>
 
     <string-array name="values_pie_trigger" translatable="false">
