@@ -279,10 +279,6 @@ public class Toolbar extends SettingsPreferenceFragment
             Settings.System.putInt(mContext.getContentResolver(),
                     Settings.System.STATUS_BAR_SHOW_CLOCK, mShowClock.isChecked()
                     ? 1 : 0);
-        } else if (preference == mCircleBattery) {
-            Settings.System.putInt(mContext.getContentResolver(),
-                    Settings.System.STATUS_BAR_CIRCLE_BATTERY, mCircleBattery.isChecked()
-                    ? 1 : 0);
         } else if (preference == mQuickPullDown) {
             Settings.System.putInt(mContext.getContentResolver(),
                     Settings.System.QS_QUICK_PULLDOWN, mQuickPullDown.isChecked()
