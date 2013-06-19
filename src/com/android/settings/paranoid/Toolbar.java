@@ -255,7 +255,7 @@ public class Toolbar extends SettingsPreferenceFragment
         if(deviceKeys==15) {
              PreferenceScreen HARDWARE =(PreferenceScreen) prefSet.findPreference(KEY_HARDWARE_KEYS);
              prefSet.removePreference(HARDWARE);
-        } 
+        }
     }
 
     private boolean isHaloPolicyBlack() {
@@ -273,26 +273,26 @@ public class Toolbar extends SettingsPreferenceFragment
             Settings.System.putInt(mContext.getContentResolver(),
                     Settings.System.STATUS_BAR_SHOW_CLOCK, mShowClock.isChecked()
                     ? 1 : 0);
-        } else if (preference == mQuickPullDown) {	
+        } else if (preference == mQuickPullDown) {
             Settings.System.putInt(mContext.getContentResolver(),
                     Settings.System.QS_QUICK_PULLDOWN, mQuickPullDown.isChecked()
-                    ? 1 : 0);	
-        } else if (preference == mHaloHide) {	
+                    ? 1 : 0);
+        } else if (preference == mHaloHide) {
             Settings.System.putInt(mContext.getContentResolver(),
                     Settings.System.HALO_HIDE, mHaloHide.isChecked()
-                    ? 1 : 0);	
-        } else if (preference == mHaloReversed) {	
+                    ? 1 : 0);
+        } else if (preference == mHaloReversed) {
             Settings.System.putInt(mContext.getContentResolver(),
                     Settings.System.HALO_REVERSED, mHaloReversed.isChecked()
-                    ? 1 : 0);	
+                    ? 1 : 0);
         } else if (preference == mHaloPause) {
             Settings.System.putInt(mContext.getContentResolver(),
                     Settings.System.HALO_PAUSE, mHaloPause.isChecked()
                     ? 1 : 0);
-        } else if (preference == mStatusBarNotifCount) {	
+        } else if (preference == mStatusBarNotifCount) {
             Settings.System.putInt(mContext.getContentResolver(),
                     Settings.System.STATUS_BAR_NOTIF_COUNT,	mStatusBarNotifCount.isChecked()
-                    ? 1 : 0);	
+                    ? 1 : 0);
         } else if (preference == mMenuButtonShow) {
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.NAV_BAR_TABUI_MENU, mMenuButtonShow.isChecked() ? 1 : 0);
@@ -306,7 +306,7 @@ public class Toolbar extends SettingsPreferenceFragment
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.PIE_MENU, mPieMenu.isChecked() ? 1 : 0);
         } else if (preference == mPieSearch) {
-            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),  
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.PIE_SEARCH, mPieSearch.isChecked() ? 1 : 0);
         } else if (preference == mPieCenter) {
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
@@ -371,7 +371,7 @@ public class Toolbar extends SettingsPreferenceFragment
                 mNotificationManager.setHaloPolicyBlack(state);
             } catch (android.os.RemoteException ex) {
                 // System dead
-            }          
+            }
             return true;
         }
         return false;
