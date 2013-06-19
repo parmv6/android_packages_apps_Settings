@@ -2032,8 +2032,7 @@
     <string name="hardware_keys_action_in_app_search">Búsqueda dentro de la aplicación</string>
     <string name="additional_options_title">Opciones adicionales</string>
     <string name="pie_controls_title">Controles circulares</string>
-    <string name="pie_controls_summary">Permite la navegación y el reporte de estado en el modo de escritorio expandido</string>
-    <string name="pie_controls_title">Controles circulares</string>   
+    <string name="pie_controls_summary">Permite la navegación y el reporte de estado en el modo de escritorio expandido</string>  
     <string name="pie_gravity_title">Ubicación de los controles</string>
     <string name="pie_gravity_summary">Seleccionar la ubicación donde se encontrarán los controles circulares</string>
     <string name="pie_gravity_top">Arriba</string>
