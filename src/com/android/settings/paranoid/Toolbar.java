@@ -236,19 +236,6 @@ public class Toolbar extends SettingsPreferenceFragment
         mStatusBarBattery.setValue(String.valueOf(batteryStyle));
         mStatusBarBattery.setOnPreferenceChangeListener(this);
 
-        mStatusBarBrightnessControl = (CheckBoxPreference) prefSet.findPreference(STATUS_BAR_BRIGHTNESS_CONTROL);
-        mStatusBarBrightnessControl.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
-                Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL, 0) == 1));
-
-        try {
-            if (Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
-                    Settings.System.SCREEN_BRIGHTNESS_MODE) == Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC) {
-                mStatusBarBrightnessControl.setEnabled(false);
-                mStatusBarBrightnessControl.setSummary(R.string.status_bar_brightness_auto_info);
-            }
-        } catch (SettingNotFoundException e) {
-        }
-
         if (!Utils.isTablet()) {
             prefSet.removePreference(mStatusBarMaxNotif);
             prefSet.removePreference(mMenuButtonShow);
